@@ -1,0 +1,10 @@
+{
+  "id": "jolt/data-cleanup",
+  "name": "Data Cleanup",
+  "version": "1.0.0",
+  "description": "Finds and fixes common problems in a block of data: extra spaces, numbers stored as text, blank and duplicate rows, and values that don't match their column. Every fix can be undone.",
+  "permissions": { "hosts": ["excel"], "network": [] },
+  "funding": [],
+  "entry": "index.html",
+  "autoRun": "main.js#autoRun"
+}

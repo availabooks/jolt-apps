@@ -1,0 +1,10 @@
+{
+  "id": "jolt/formula-audit",
+  "name": "Formula Audit",
+  "version": "1.0.0",
+  "description": "Scans the workbook for error values, formulas that break the pattern around them, numbers typed into formulas, links to other files and volatile functions. Click a finding to go to it, or write a report to a new sheet.",
+  "permissions": { "hosts": ["excel"], "network": [] },
+  "funding": [],
+  "entry": "index.html",
+  "autoRun": "main.js#autoRun"
+}

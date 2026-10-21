@@ -1,0 +1,10 @@
+{
+  "id": "jolt/workbook-map",
+  "name": "Workbook Map",
+  "version": "1.0.0",
+  "description": "A searchable list of everything in the workbook: sheets (including hidden ones), tables, PivotTables, charts and named ranges. Click to go to any of them, or add a Contents sheet of links.",
+  "permissions": { "hosts": ["excel"], "network": [] },
+  "funding": [],
+  "entry": "index.html",
+  "autoRun": "main.js#autoRun"
+}

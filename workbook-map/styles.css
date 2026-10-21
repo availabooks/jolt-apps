@@ -1,0 +1,118 @@
+/* Colours come from JET's own theme (so dark mode works), with fallbacks for other hosts. */
+.app {
+  --fg: var(--jolt-fg, #1f1f1f);
+  --muted: var(--jolt-fg-2, #5c5c5c);
+  --line: var(--jolt-border, #d6d6d6);
+  --soft: var(--jolt-bg-2, #f5f5f5);
+  --accent: #1e7b3c;
+  --ok: var(--jolt-ok, #107c10);
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+  color: var(--fg);
+  font: 13px/1.45 "Segoe UI", system-ui, sans-serif;
+}
+.app h1 {
+  margin: 0 0 4px;
+  font-size: 18px;
+}
+.app header p,
+.app .target,
+.app .status,
+.app .stats {
+  margin: 0;
+  color: var(--muted);
+}
+.app .toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+}
+.app button {
+  padding: 5px 12px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--soft);
+  color: var(--fg);
+  font: inherit;
+  cursor: pointer;
+}
+.app button.primary {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+.app button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+.app .search {
+  padding: 6px 8px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--fg);
+  font: inherit;
+}
+.app .summary,
+.app .empty,
+.app small {
+  margin: 0;
+  color: var(--muted);
+}
+.app h2 {
+  margin: 8px 0 6px;
+  font-size: 14px;
+}
+.app .tree,
+.app .tree ul {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.app .tree ul {
+  margin: 2px 0 4px 14px;
+}
+.app .sheet {
+  padding: 6px 8px;
+  border-left: 3px solid transparent;
+  border-radius: 4px;
+}
+.app .sheet.active {
+  border-left-color: var(--accent);
+  background: var(--soft);
+}
+.app .sheet.hidden .sheet-name {
+  font-style: italic;
+}
+.app .sheet-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.app button.link {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--fg);
+  text-align: left;
+}
+.app button.link:hover:not(:disabled) {
+  text-decoration: underline;
+}
+.app .sheet-name {
+  font-weight: 600;
+}
+.app button.small {
+  padding: 1px 8px;
+  font-size: 12px;
+}
+.app .kind {
+  display: inline-block;
+  min-width: 72px;
+  color: var(--muted);
+  font-size: 12px;
+}

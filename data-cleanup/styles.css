@@ -1,0 +1,82 @@
+/* Colours come from JET's own theme (so dark mode works), with fallbacks for other hosts. */
+.app {
+  --fg: var(--jolt-fg, #1f1f1f);
+  --muted: var(--jolt-fg-2, #5c5c5c);
+  --line: var(--jolt-border, #d6d6d6);
+  --soft: var(--jolt-bg-2, #f5f5f5);
+  --accent: #1e7b3c;
+  --ok: var(--jolt-ok, #107c10);
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+  color: var(--fg);
+  font: 13px/1.45 "Segoe UI", system-ui, sans-serif;
+}
+.app h1 {
+  margin: 0 0 4px;
+  font-size: 18px;
+}
+.app header p,
+.app .target,
+.app .status,
+.app .stats {
+  margin: 0;
+  color: var(--muted);
+}
+.app .toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+}
+.app button {
+  padding: 5px 12px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--soft);
+  color: var(--fg);
+  font: inherit;
+  cursor: pointer;
+}
+.app button.primary {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+.app button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+.app .issues {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.app .issue {
+  display: grid;
+  gap: 6px;
+  justify-items: start;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+.app .issue.ok {
+  color: var(--muted);
+}
+.app .issue-head {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.app .count {
+  font-weight: 600;
+}
+.app .issue.ok .count {
+  color: var(--ok);
+}
+.app .detail {
+  margin: 0;
+  color: var(--muted);
+}
