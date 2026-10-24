@@ -1,0 +1,409 @@
+/* Colours come from JET's own theme (so dark mode works), with fallbacks for other hosts. */
+.app {
+  --fg: var(--jolt-fg, #1f1f1f);
+  --muted: var(--jolt-fg-2, #5c5c5c);
+  --line: var(--jolt-border, #d6d6d6);
+  --soft: var(--jolt-bg-2, #f5f5f5);
+  --bg: var(--jolt-bg, #ffffff);
+  --accent: #2165b6;
+  --ok: var(--jolt-ok, #107c10);
+  --bad: var(--jolt-error, #c42b1c);
+  --warn: #9d5d00;
+  --mono: Consolas, "Cascadia Mono", Menlo, monospace;
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+  color: var(--fg);
+  font: 13px/1.45 "Segoe UI", system-ui, sans-serif;
+}
+.app h1 {
+  margin: 0 0 4px;
+  font-size: 18px;
+}
+.app h2 {
+  display: inline;
+  margin: 0;
+  font-size: 14px;
+}
+.app p {
+  margin: 0;
+}
+.app .muted,
+.app .status {
+  color: var(--muted);
+}
+.app .r-status {
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.app .r-status.ready {
+  color: var(--ok);
+}
+.app .r-status.failed {
+  color: var(--bad);
+}
+.app .toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+}
+.app button,
+.app select {
+  padding: 5px 12px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--soft);
+  color: var(--fg);
+  font: inherit;
+  cursor: pointer;
+}
+.app button.primary {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+.app button.link {
+  padding: 2px 4px;
+  border: none;
+  background: none;
+  color: var(--accent);
+}
+.app button:disabled,
+.app select:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+.app textarea,
+.app input.rname {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--bg);
+  color: var(--fg);
+  font: inherit;
+}
+.app textarea {
+  resize: vertical;
+}
+.app textarea.code,
+.app textarea.prompt-text,
+.app input.rname {
+  font: 12px/1.45 var(--mono);
+}
+.app textarea.code {
+  tab-size: 2;
+  white-space: pre;
+}
+
+/* Tabs: one per analysis */
+.app .tabs {
+  display: grid;
+  gap: 4px;
+}
+.app .tab-list {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  /* The line under the tabs is drawn inside the strip, so the active tab can cover it without overflowing. */
+  box-shadow: inset 0 -1px var(--line);
+}
+.app .tab {
+  display: flex;
+  flex: none;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 6px 6px 0 0;
+  background: var(--soft);
+}
+.app .tab.active {
+  border-bottom-color: var(--bg);
+  background: var(--bg);
+}
+.app .tab button {
+  border: none;
+  border-radius: 0;
+  background: none;
+}
+.app .tab-name {
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.app .tab.active .tab-name {
+  font-weight: 600;
+}
+.app .tab .tab-close {
+  padding: 5px 8px 5px 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+.app .tab-add {
+  flex: none;
+  margin-bottom: 2px;
+  padding: 2px 10px;
+}
+.app .tab-tools {
+  gap: 4px 8px;
+  font-size: 12px;
+}
+.app .tab-tools select {
+  padding: 2px 6px;
+}
+
+/* Sections */
+.app .panel {
+  display: grid;
+  gap: 8px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+.app .panel > summary {
+  cursor: pointer;
+}
+.app .panel:not([open]) {
+  gap: 0;
+}
+.app .panel > * + * {
+  margin-top: 8px;
+}
+
+/* The analysis description, above the sections */
+.app textarea.description {
+  font-size: 14px;
+}
+
+/* The AI's explanation and interpretation, shown as formatted Markdown */
+.app .markdown-box {
+  display: grid;
+  gap: 6px;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+}
+.app .markdown-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.app h3 {
+  margin: 0;
+  font-size: 13px;
+}
+.app [hidden] {
+  display: none !important;
+}
+.app .markdown {
+  overflow-x: auto;
+  line-height: 1.5;
+}
+.app .markdown > :first-child {
+  margin-top: 0;
+}
+.app .markdown > :last-child {
+  margin-bottom: 0;
+}
+.app .markdown h1,
+.app .markdown h2,
+.app .markdown h3,
+.app .markdown h4,
+.app .markdown h5,
+.app .markdown h6 {
+  display: block;
+  margin: 12px 0 4px;
+  font-size: 14px;
+}
+.app .markdown h1,
+.app .markdown h2 {
+  font-size: 15px;
+}
+.app .markdown p,
+.app .markdown ul,
+.app .markdown ol,
+.app .markdown blockquote,
+.app .markdown pre,
+.app .markdown table {
+  margin: 0 0 8px;
+}
+.app .markdown ul,
+.app .markdown ol {
+  padding-left: 20px;
+}
+.app .markdown li > ul,
+.app .markdown li > ol {
+  margin: 2px 0;
+}
+.app .markdown code {
+  padding: 0 3px;
+  border-radius: 3px;
+  background: var(--soft);
+  font: 12px var(--mono);
+}
+.app .markdown pre {
+  overflow-x: auto;
+  padding: 8px;
+  border-radius: 4px;
+  background: var(--soft);
+}
+.app .markdown pre code {
+  padding: 0;
+}
+.app .markdown blockquote {
+  padding-left: 10px;
+  border-left: 3px solid var(--line);
+  color: var(--muted);
+}
+.app .markdown table {
+  border-collapse: collapse;
+}
+.app .markdown th,
+.app .markdown td {
+  padding: 3px 8px;
+  border: 1px solid var(--line);
+  text-align: left;
+}
+.app .markdown th {
+  background: var(--soft);
+}
+.app .markdown hr {
+  border: none;
+  border-top: 1px solid var(--line);
+}
+.app .markdown a {
+  color: var(--accent);
+}
+
+/* Data sources */
+.app .sources {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.app .source {
+  display: grid;
+  gap: 2px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  background: var(--soft);
+}
+.app .source-head {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.app input.rname {
+  width: auto;
+  flex: 1;
+  padding: 2px 6px;
+  font-weight: 600;
+}
+.app .columns {
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+.app label.inline {
+  white-space: nowrap;
+}
+
+/* Results */
+.app .results {
+  display: grid;
+  gap: 10px;
+}
+.app .error-box {
+  display: grid;
+  gap: 8px;
+  justify-items: start;
+  padding: 8px 10px;
+  border-left: 3px solid var(--bad);
+  background: var(--soft);
+}
+.app .error-label {
+  color: var(--bad);
+  font-weight: 600;
+}
+.app .console {
+  max-height: 360px;
+  margin: 0;
+  padding: 8px 10px;
+  overflow: auto;
+  border-radius: 4px;
+  background: var(--soft);
+  font: 12px/1.4 var(--mono);
+  white-space: pre;
+}
+.app .console .err,
+.app .console .error {
+  color: var(--bad);
+}
+.app .console .warning {
+  color: var(--warn);
+}
+.app .console .message {
+  color: var(--muted);
+}
+.app .plots {
+  display: grid;
+  gap: 10px;
+}
+.app .plot {
+  display: grid;
+  gap: 6px;
+  justify-items: start;
+}
+.app .plot img {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #fff;
+}
+.app .outputs {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.app .output {
+  display: grid;
+  gap: 6px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+.app .output-name {
+  font-weight: 600;
+}
+.app .preview {
+  overflow-x: auto;
+}
+.app .preview table {
+  border-collapse: collapse;
+  font-size: 12px;
+}
+.app .preview td,
+.app .preview th {
+  max-width: 14em;
+  padding: 1px 8px 1px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+}
+.app .preview th {
+  font-weight: normal;
+  font-style: italic;
+  border-bottom: 1px solid var(--line);
+}
+.app .preview td.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}

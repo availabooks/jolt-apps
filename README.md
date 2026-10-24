@@ -7,6 +7,7 @@ Three small, complete Excel apps built with [JOLT](https://jolt.availabooks.com/
 | [Data Cleanup](data-cleanup/) | `jam:jolt/data-cleanup` | Finds problems in a block of data and fixes each with one click, with Undo: extra spaces, numbers stored as text, blank and duplicate rows, and values that don't fit their column. |
 | [Workbook Map](workbook-map/) | `jam:jolt/workbook-map` | Lists every sheet (hidden ones too), table, PivotTable, chart and named range, so you can click to any of them. It can also add a Contents sheet of links. |
 | [Formula Audit](formula-audit/) | `jam:jolt/formula-audit` | Finds error values, formulas that break the pattern around them, numbers typed into formulas, links to other files and volatile functions, and can write a report sheet. |
+| [R for Excel](r/) (preview) | not yet published | Runs R ([webR](https://docs.r-wasm.org/webr/)) on data from the workbook. It builds a prompt that tells your AI assistant about your data, runs the R code the AI writes, and writes the tables and plots back to sheets. Each analysis has its own tab, and you can download one as a file and import it into another workbook. |
 
 ## Try one
 
@@ -27,6 +28,11 @@ Each folder is a complete JOLT project:
 | `styles.css` | The look, using JET's theme colours so dark mode works |
 | `main.js` | The UI (built with [VanJS](https://vanjs.org/), which JOLT bundles) and every call to Excel, through `jolt.run` |
 | `analyze.js` | The logic, as pure functions that are easy to read and test |
+
+R for Excel uses `data.js` and `prompt.js` for its pure logic instead of `analyze.js`. It also has:
+- `rsession.js`, which starts and runs R;
+- `jolt.R`, the R helpers, including `excel_out()`;
+- `vendor/webr.mjs`, webR's loader, copied in because installed apps can't import code from other sites.
 
 To build on one:
 1. Open JADE in Excel (**Build** on the Home tab) and start a project.

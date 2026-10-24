@@ -1,0 +1,10 @@
+{
+  "id": "jolt/r",
+  "name": "R for Excel",
+  "version": "0.1.0",
+  "description": "Runs R (webR) on data from your workbook and writes the results back to Excel. Builds a prompt that tells your AI assistant about your data, so it can write the R code for you.",
+  "permissions": { "hosts": ["excel"], "network": ["https://webr.r-wasm.org", "https://repo.r-wasm.org"] },
+  "funding": [],
+  "entry": "index.html",
+  "autoRun": "main.js#autoRun"
+}
